@@ -16,9 +16,24 @@ let calculateYearMonth = function() {
   document.getElementById("month").innerHTML = monthNames[month];
 }
 
-let calculateDateDay = function() {
+let calculateDayNum = function () {
   let dayDate = date1.getDate();
-  document.getElementById("date").innerHTML = dayDate;
+  var dateOutput = document.getElementById("date");
+  if (dayDate === 1 || dayDate === 21 || dayDate ===31) {
+    dateOutput.innerHTML = "The was the " + dayDate + "st of the Month";
+
+  } else if (dayDate === 2 || dayDate === 22) {
+    dateOutput.innerHTML = "The was the " + dayDate + "nd of the Month";
+
+  } else if (dayDate === 3 || dayDate === 23) {
+    dateOutput.innerHTML = "The was the " + dayDate + "rd of the Month";
+
+  } else {
+    dateOutput.innerHTML = "The was the " + dayDate + "th of the Month";
+  }
+}
+
+let calculateDay = function() {
   let sameDay = date1.getDay();
   let dayOfWeek = document.getElementById("dayOfWeek");
   switch(sameDay) {
@@ -58,5 +73,6 @@ let calculateTime = function() {
 let date1 = new Date();
 calculateTotalDateTime();
 calculateYearMonth();
-calculateDateDay();
+calculateDayNum();
+calculateDay();
 calculateTime();
